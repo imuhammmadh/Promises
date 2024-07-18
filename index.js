@@ -111,3 +111,11 @@ let reject_promise = Promise.reject(new Error("Error"))
 reject_promise.then((value) => {
     console.log(value);
 })
+
+//Fetch API
+let p7 = fetch("https://goweather.herokuapp.com/weather/mumbai")
+p7.then((response) => {
+    // // console.log(response.status);
+    // //console.log(response.headers);
+    return response.json()
+}).then(response => console.log(response))
