@@ -57,3 +57,57 @@ p3.then((value) => {
     console.log(value);
 })
 
+//The Promise API
+
+let p4 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(4)
+    }, 4000)
+})
+let p5 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        // reject(new Error("error"))
+        resolve(5)
+    }, 2000)
+})
+let p6 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(6)
+    }, 3000)
+})
+
+p4.then((value) => {
+    console.log(value);
+})
+p5.then((value) => {
+    console.log(value);
+})
+p6.then((value) => {
+    console.log(value);
+})
+
+let all_settled_promise = Promise.allSettled([p4, p5, p6])
+let all_promise = Promise.all([p4, p5, p6])
+all_promise.then((value) => {
+    console.log(value);
+})
+all_settled_promise.then((value) => {
+    console.log(value);
+})
+
+let race_promise = Promise.race([p4, p5, p6])
+race_promise.then((value) => {
+    console.log(value);
+})
+let any_promise = Promise.any([p4, p5, p6])
+any_promise.then((value) => {
+    console.log(value);
+})
+let resolve_promise = Promise.resolve(6)
+resolve_promise.then((value) => {
+    console.log(value);
+})
+let reject_promise = Promise.reject(new Error("Error"))
+reject_promise.then((value) => {
+    console.log(value);
+})
